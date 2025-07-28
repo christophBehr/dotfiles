@@ -1,8 +1,11 @@
 ## dotfile vault
 
 folder structure:
+
   tokyo-kde-dotfiles/
+  |
   ├── install.sh
+  |
   ├── kitty/
   │   ├── kitty.conf
   │   └── themes/
