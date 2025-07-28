@@ -1,3 +1,3 @@
 ## dotfile vault
 
-Tokyonoght with installation script
+Tokyonight with installation script
