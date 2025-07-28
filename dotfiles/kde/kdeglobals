@@ -1,0 +1,42 @@
+[General]
+ColorScheme=TokyoNight
+Name=Tokyo Night
+XftAntialias=true
+XftHintStyle=hintslight
+XftSubPixel=rgb
+
+[WM]
+activeBackground=26,27,38
+activeForeground=192,202,245
+inactiveBackground=30,31,42
+inactiveForeground=144,147,162
+
+[Colors:Window]
+BackgroundNormal=26,27,38
+ForegroundNormal=192,202,245
+
+[Colors:View]
+BackgroundNormal=30,31,42
+ForegroundNormal=192,202,245
+
+[Colors:Button]
+BackgroundNormal=33,34,49
+ForegroundNormal=192,202,245
+
+[Colors:Selection]
+BackgroundNormal=122,162,247
+ForegroundNormal=26,27,38
+
+[Colors:Tooltip]
+BackgroundNormal=45,47,60
+ForegroundNormal=192,202,245
+
+[Icons]
+Theme=breeze-dark
+
+[Fonts]
+fixed=JetBrainsMono Nerd Font Mono,11,-1,5,50,0,0,0,0,0
+general=JetBrainsMono Nerd Font,11,-1,5,50,0,0,0,0,0
+menu=JetBrainsMono Nerd Font,11,-1,5,50,0,0,0,0,0
+toolbar=JetBrainsMono Nerd Font,11,-1,5,50,0,0,0,0,0
+small=JetBrainsMono Nerd Font,10,-1,5,50,0,0,0,0,0

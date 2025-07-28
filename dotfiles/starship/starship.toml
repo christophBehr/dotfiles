@@ -1,0 +1,60 @@
+# starship.toml – Tokyo Night Edition
+add_newline = true
+
+[hostname]
+style = "bold #7aa2f7"
+
+[shell]
+prompt_order = ["hostname","username","directory","git_branch","git_state","git_status","cmd_duration","line_break","character"]
+
+[directory]
+style = "cyan"
+truncation_length = 3
+read_only = " "
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+
+[git_state]
+stashed = "●"
+style = "magenta"
+
+[git_status]
+conflicted = "✖"
+added = ""
+deleted = ""
+renamed = "➜"
+modified = ""
+untracked = "?"
+style = "red"
+
+[character]
+symbol = "❯"
+error_symbol = "✘"
+style_success = "green"
+style_failure = "red"
+
+[jobs]
+symbol = "⚙️ "
+style = "green"
+
+[memory_usage]
+style = "yellow"
+
+[time]
+format = "🕒 %H:%M:%S"
+style = "bold blue"
+
+[custom.echo]
+when = "true"
+command = "echo '東京ナイト 🌃'"
+style = "dim white"
+
+[git_status ahead_behind]
+format = "[⇡{ahead} ⇣{behind}]"
+style = "blue"
+
+[status]
+style = "bold #bb9af7"
+
