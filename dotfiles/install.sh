@@ -24,57 +24,70 @@ yay -S --noconfirm --needed "${REQUIRED_PKGS[@]}"
 
 echo "📦 Installing required font..."
 mkdir -p ~/.local/share/fonts
-cd ~/.local/share/fonts
+mkdir -p "$SCRIPT_DIR/fonts"
+cd "$SCRIPT_DIR/fonts"
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
-unzip JetBrainsMono.zip
+unzip -o "$SCRIPT_DIR/fonts/JetBrainsMono.zip" -d "$SCRIPT_DIR/fonts"
 fc-cache -fv
 
 
 # Kitty conifg
 echo "📁 Setting up Kitty config..."
+if [ -f ~/.config/kitty ]; then
+  echo "⚠️  Achtung: ~/.config/kitty ist eine Datei, aber es sollte ein Verzeichnis sein. Lösche es..."
+  rm ~/.config/kitty
+fi
 mkdir -p ~/.config/kitty
 mkdir -p ~/.config/kitty/themes
-cp -r kitty/kitty.conf ~/.config/kitty/kitty.conf
-cp -r kitty/themes/tokyonight.conf ~/.config/kitty/themes/tokyonight.conf
+cp "$SCRIPT_DIR/kitty/kitty.conf" ~/.config/kitty/kitty.conf
+cp "$SCRIPT_DIR/kitty/themes/tokyonight.conf" ~/.config/kitty/themes/tokyonight.conf
 
 # Fonts
-echo "🔤 Installing JetBrainsMono Nerd Font..."
+echo "🔤 Kopiere Fonts..."
 mkdir -p ~/.local/share/fonts
-cp -r fonts/*.ttf ~/.local/share/fonts/
+
+shopt -s nullglob
+for font in "$SCRIPT_DIR/fonts/"*.ttf; do
+  echo "→ $font"
+  cp "$font" ~/.local/share/fonts/
+done
 fc-cache -fv
 
 # Plasma panel & color scheme
 mkdir -p ~/.config
-cp -r kde/plasma-org.kde.plasma.desktop-appletsrc ~/.config/
-cp -r kde/kdeglobals ~/.config/
+cp "$SCRIPT_DIR/kde/plasma-org.kde.plasma.desktop-appletsrc" ~/.config/
+cp "$SCRIPT_DIR/kde/kdeglobals" ~/.config/
 
 # GTK Themes
 echo "🎨 Applying GTK settings..."
 mkdir -p ~/.config/gtk-3.0
-cp -r gtk/gtkrc-2.0 ~/.config/
-cp -r gtk/settings.ini ~/.config/gtk-3.0/
+cp "$SCRIPT_DIR/gtk/gtkrc-2.0" ~/.config/
+cp "$SCRIPT_DIR/gtk/settings.ini" ~/.config/gtk-3.0/
 
 # Color scheme file for KDE
 mkdir -p ~/.local/share/color-schemes
-cp -r kde/TokyoNight.colors ~/.local/share/color-schemes/
+cp "$SCRIPT_DIR/kde/TokyoNight.colors" ~/.local/share/color-schemes/
 
 # Neofetch config
 echo "📸 Setting up Neofetch..."
 mkdir -p ~/.config/neofetch
-cp -r neofetch/config.conf ~/.config/neofetch/config.conf
+cp "$SCRIPT_DIR/neofetch/config.conf" ~/.config/neofetch/config.conf
 
 # Picom
-cp -r picom/picom.conf ~/.config/picom.conf
+cp "$SCRIPT_DIR/picom/picom.conf" ~/.config/picom.conf
 
 # Starship
 mkdir -p ~/.config/starship
-cp starship/starship.toml ~/.config/starship/starship.toml
+cp "$SCRIPT_DIR/starship/starship.toml" ~/.config/starship/starship.toml
 
 # Wallpaper installieren
 echo "🖼 Installing wallpapers..."
 mkdir -p ~/.local/share/backgrounds
-cp wallpapers/vertical_wallpaper.jpg ~/.local/share/backgrounds/
-cp wallpapers/horizontal_wallpaper.jpg ~/.local/share/backgrounds/
+if [ -f "$SCRIPT_DIR/wallpapers/vertical_wallpaper.jpg" ]; then
+  cp "$SCRIPT_DIR/wallpapers/vertical_wallpaper.jpg" ~/Pictures/
+else
+  echo "⚠️  vertical_wallpaper.jpg wurde nicht gefunden – überspringe..."
+fi
 
 
 
